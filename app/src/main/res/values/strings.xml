@@ -1,0 +1,46 @@
+<resources>
+    <!-- Navigation Bar -->
+    <string name="home">Home</string>
+    <string name="station">Station</string>
+    <string name="scan">Scan</string>
+    <string name="history">History</string>
+    <string name="profile">Profile</string>
+
+    <!-- Main Screen -->
+    <string name="your_car">Your Car</string>
+    <string name="battery">Battery</string>
+    <string name="estimated_range">Estimated Range</string>
+    <string name="car_eco_mode">Car Eco Mode</string>
+    <string name="suggestions_spots">Suggestions Spots</string>
+    <string name="see_all">See All</string>
+
+    <!-- Map Screen / Station Details -->
+    <string name="open">Open</string>
+    <string name="super_fast_charging_station">Super Fast Charging Station</string>
+    <string name="panvel_station">Panvel station Navi Mumbai (300km / 90min)</string>
+    <string name="connection_type">Connection Type</string>
+    <string name="per_kwh">Per KWH</string>
+    <string name="parking_fee">Parking Fee</string>
+    <string name="arrive">Arrive</string>
+    <string name="depart">Depart</string>
+    <string name="book_charger">Book Charger</string>
+
+    <!-- Registration and Login -->
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="select_region">Select Region</string>
+    <string name="select_state">Select State</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="continue_">Continue</string>
+    <string name="have_an_account_login">Have an account? Login</string>
+
+    <!-- Onboarding Screen -->
+    <string name="track_charging">Track your charging process in real time</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur. Viverra erat libero cursus dui</string>
+
+    <!-- App Name -->
+    <string name="urjaNext">UrjaNext</string>
+
+    <!-- Search -->
+    <string name="search_location">Search location</string>
+</resources>
