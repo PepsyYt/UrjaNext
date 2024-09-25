@@ -36,7 +36,8 @@ val Typography = Typography(
     headlineLarge = TextStyle(
         fontFamily = SanFranciscoPro,
         fontWeight = FontWeight.Bold,
-        fontSize = 16.
+        fontSize = 16.sp,
+        lineHeight = 24.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = SanFranciscoPro,

@@ -51,6 +51,19 @@ android {
 
 dependencies {
 
+    // navigation
+    implementation("androidx.navigation:navigation-compose:2.8.1")
+    // viewmodel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+    // Coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    // Material Icons
+    implementation("androidx.compose.material:material-icons-extended-android:1.7.2")
+
+
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
