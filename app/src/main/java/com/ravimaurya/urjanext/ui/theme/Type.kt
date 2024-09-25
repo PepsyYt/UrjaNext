@@ -2,18 +2,61 @@ package com.ravimaurya.urjanext.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.ravimaurya.urjanext.R
+
+private val SanFranciscoPro = FontFamily(
+    Font(R.font.sfpro_regular),
+    Font(R.font.sfpro_medium)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
+    displayLarge = TextStyle(
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.W700,
+        fontSize = 34.sp,
+        lineHeight = 48.sp,
+    ),
+    displayMedium = TextStyle(
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.W700,
+        fontSize = 24.sp,
+        lineHeight = 36.sp,
+    ),
+    displaySmall = TextStyle(
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.W700,
+        fontSize = 20.sp,
+        lineHeight = 30.sp,
+    ),
+    headlineLarge = TextStyle(
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.
+    ),
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.Bold,// w700
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 21.sp,
+        letterSpacing = 0.5.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = SanFranciscoPro,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+
     )
     /* Other default text styles to override
     titleLarge = TextStyle(
