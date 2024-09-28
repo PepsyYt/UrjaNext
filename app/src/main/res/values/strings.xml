@@ -30,8 +30,11 @@
     <string name="login">Login</string>
     <string name="select_region">Select Region</string>
     <string name="select_state">Select State</string>
+    <string name="enter_password">Enter your password</string>
     <string name="phone_number">Phone Number</string>
     <string name="continue_">Continue</string>
+    <string name="learn_more">Learn More</string>
+    <string name="welcome_to_urjanext">Welcome to UrjaNext!</string>
     <string name="have_an_account_login">Have an account? Login</string>
 
     <!-- Onboarding Screen -->
@@ -39,7 +42,7 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur. Viverra erat libero cursus dui</string>
 
     <!-- App Name -->
-    <string name="urjaNext">UrjaNext</string>
+    <string name="app_name">UrjaNext</string>
 
     <!-- Search -->
     <string name="search_location">Search location</string>
