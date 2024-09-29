@@ -20,10 +20,10 @@ sealed class Screens(val route: String){
 fun MainNavGraph(navController: NavHostController){
     NavHost(
         navController = navController,
-        startDestination = ""
+        startDestination = Screens.WelcomeScreen.route
     ) {
         composable(Screens.WelcomeScreen.route) {
-            WelcomeScreen()
+            WelcomeScreen(navController)
         }
          composable(Screens.LoginScreen.route) {
             LoginScreen()

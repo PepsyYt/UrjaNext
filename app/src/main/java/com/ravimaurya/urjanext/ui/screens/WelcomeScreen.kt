@@ -41,15 +41,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavController
 import com.ravimaurya.urjanext.R
 import com.ravimaurya.urjanext.ui.components.BigButton
 import com.ravimaurya.urjanext.ui.components.NormalText
 import com.ravimaurya.urjanext.ui.theme.Green40
+import com.ravimaurya.urjanext.ui.util.Screens
 
 @Composable
-fun WelcomeScreen(){
-//    rgba(4, 197, 58, 0.5),
-//    rgba(209, 255, 77, 0.5)
+fun WelcomeScreen(navController: NavController){
+
     val linearGradientBG = listOf(
         Color(4, 197, 58),
         Color(209, 255, 77),
@@ -135,7 +136,8 @@ fun WelcomeScreen(){
             BigButton(
                 label = R.string.continue_,
                 onClick = {
-
+                    // Navigate to Authentication
+                    navController.navigate(Screens.RegistrationScreen.route)
                 }
             )
 
@@ -168,6 +170,6 @@ fun WelcomeScreen(){
 //@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun WelcomePreview(){
-    WelcomeScreen()
+//    WelcomeScreen()
 }
 

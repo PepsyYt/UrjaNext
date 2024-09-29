@@ -16,18 +16,22 @@ import androidx.compose.material.icons.filled.ElectricBolt
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PhoneEnabled
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -60,7 +64,7 @@ fun RegistrationScreen(){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp, vertical = 20.dp),
+            .padding(start = 20.dp, end = 20.dp, top = 40.dp, bottom = 20.dp),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -81,7 +85,7 @@ fun RegistrationScreen(){
                 )
                 Text(
                     text = stringResource(R.string.welcome_to_urjanext),
-                    style = MaterialTheme.typography.headlineLarge
+                    style = MaterialTheme.typography.displaySmall
                 )
 
                 TabRow(
@@ -126,13 +130,9 @@ fun RegistrationScreen(){
                     state = pagerState,
                     userScrollEnabled = false
                 ) {
-                    when{
-                        pagerState.currentPage == 0 -> {
-                            Registration()
-                        }
-                        pagerState.currentPage == 1 -> {
-                            Login()
-                        }
+                    when (pagerState.currentPage) {
+                        0 -> Registration()
+                        1 -> Login()
                     }
                 }
             }
@@ -167,20 +167,53 @@ fun Registration(){
     var expanded by remember { mutableStateOf(false) }
     val list = listOf("Maharashtra", "Uttar Pradesh", "Delhi")
     var selectedItem by remember { mutableStateOf("Select State") }
+    var userName by remember { mutableStateOf("") }
     var phoneNumber by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
 
     Column(
        modifier = Modifier
-           .fillMaxWidth(),
+           .fillMaxWidth()
+           .padding(top = 12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        // User Name Field
+        Text(
+            text = stringResource(R.string.your_name),
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Start
+        )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = stringResource(R.string.your_name)) },
+            value = userName,
+            onValueChange = {
+                userName = it
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Person,
+                    contentDescription = ""
+                )
+            },
+            shape = ShapeDefaults.ExtraLarge,
+            textStyle = MaterialTheme.typography.bodyMedium,
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Color.LightGray,
+                unfocusedLabelColor = Color.Gray,
+                unfocusedLeadingIconColor = Color.Gray
+            )
+        )
+
+        // Region/State Field
         Text(
             text = stringResource(R.string.select_region),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Start
         )
         OutlinedTextField(
-            placeholder = {  },
+            modifier = Modifier.fillMaxWidth(),
             label = {},
             value = selectedItem,
             onValueChange = {
@@ -199,7 +232,8 @@ fun Registration(){
                     modifier = Modifier.clickable { expanded = !expanded }
                 )
             },
-            shape = ShapeDefaults.ExtraLarge
+            shape = ShapeDefaults.ExtraLarge,
+            textStyle = MaterialTheme.typography.bodyMedium
         )
         DropdownMenu(
             expanded = expanded,
@@ -217,13 +251,16 @@ fun Registration(){
                 )
             }
         }
+
+        // Phone Number Field
         Text(
             text = stringResource(R.string.phone_number),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Start
         )
         OutlinedTextField(
-            label = { Text(text = stringResource(R.string.enter_password)) },
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = stringResource(R.string.enter_phone)) },
             value = phoneNumber,
             onValueChange = {
                 phoneNumber = it
@@ -234,7 +271,30 @@ fun Registration(){
                     contentDescription = ""
                 )
             },
-            shape = ShapeDefaults.ExtraLarge
+            shape = ShapeDefaults.ExtraLarge,
+            textStyle = MaterialTheme.typography.bodyMedium
+        )
+        // Password Field
+        Text(
+            text = stringResource(R.string.password),
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Start
+        )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = stringResource(R.string.enter_password)) },
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Filled.Lock,
+                    contentDescription = ""
+                )
+            },
+            shape = ShapeDefaults.ExtraLarge,
+            textStyle = MaterialTheme.typography.bodyMedium
         )
 
     }
