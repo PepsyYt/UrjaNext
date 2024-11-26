@@ -4,29 +4,27 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.ravimaurya.urjanext.ui.screens.WelcomeScreen
-import com.ravimaurya.urjanext.ui.screens.auth.RegistrationScreen
-import com.ravimaurya.urjanext.ui.theme.UrjaNextTheme
-import com.ravimaurya.urjanext.ui.util.MainNavGraph
+import com.ravimaurya.urjanext.theme.UrjaNextTheme
+import com.ravimaurya.urjanext.presentation.screens.navigation.MainNavGraph
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             UrjaNextTheme {
-                val navController = rememberNavController()
-                MainNavGraph(navController)
+
+                MainNavGraph()
 
             }
         }
     }
 }
+
+
+//https://creatie.ai/goto/DzL2Jjnd?page_id=0:0&layer_id=25:3225&file=139207260573249
+//https://www.figma.com/design/bsdgLbmycjH9ibWPfLoG1y/sem-5-project?node-id=0-1&t=zhPJQuSmxtcWXwa4-1

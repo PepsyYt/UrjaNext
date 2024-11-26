@@ -1,4 +1,4 @@
-package com.ravimaurya.urjanext.ui.components
+package com.ravimaurya.urjanext.presentation.components
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text

@@ -1,4 +1,4 @@
-package com.ravimaurya.urjanext.ui.theme
+package com.ravimaurya.urjanext.theme
 
 import androidx.compose.ui.graphics.Color
 
