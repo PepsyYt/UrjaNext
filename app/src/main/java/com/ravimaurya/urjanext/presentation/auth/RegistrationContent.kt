@@ -31,6 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ravimaurya.urjanext.R
+import com.ravimaurya.urjanext.domain.model.UserModel
 
 @Composable
 fun RegistrationContent(){
@@ -41,6 +42,7 @@ fun RegistrationContent(){
     var userName by remember { mutableStateOf("") }
     var phoneNumber by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
 
 
     Column(

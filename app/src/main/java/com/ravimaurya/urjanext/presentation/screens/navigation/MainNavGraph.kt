@@ -16,6 +16,8 @@ object NavRoutes {
     const val WELCOME1_SCREEN = ""
 }
 
+
+
 @Composable
 fun MainNavGraph(){
 
@@ -28,7 +30,7 @@ fun MainNavGraph(){
         // Welcome
          composable(NavRoutes.WELCOME_SCREEN) { WelcomeScreen(navController) }
         // Authentication
-         composable(NavRoutes.AUTHENTICATION_SCREEN) { AuthenticationScreen() }
+         composable(NavRoutes.AUTHENTICATION_SCREEN) { AuthenticationScreen(navController) }
         // Home
          composable(NavRoutes.HOME_SCREEN) { HomeScreen() }
 
