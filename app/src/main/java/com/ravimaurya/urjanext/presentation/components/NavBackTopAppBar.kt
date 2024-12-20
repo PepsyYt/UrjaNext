@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavBackTopAppBar(
-    title: String = "",
+    title: String,
     onBackClick: () -> Unit
 ){
     TopAppBar(

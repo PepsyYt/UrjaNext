@@ -2,12 +2,10 @@ package com.ravimaurya.urjanext.presentation.auth
 
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
@@ -40,8 +38,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ravimaurya.urjanext.R
 import com.ravimaurya.urjanext.domain.model.UserModel
-import com.ravimaurya.urjanext.presentation.components.BigButton
-import com.ravimaurya.urjanext.presentation.screens.navigation.NavRoutes
+import com.ravimaurya.urjanext.presentation.navigation.NavRoutes
 import com.ravimaurya.urjanext.theme.Green40
 import kotlinx.coroutines.launch
 
@@ -74,8 +71,8 @@ fun AuthenticationScreen(
                 println("AuthState: Loading...")
             }
             is UserAuthenticationState.Success -> {
-                navController.navigate(NavRoutes.HOME_SCREEN){
-                    popUpTo(NavRoutes.AUTHENTICATION_SCREEN){ inclusive = false }
+                navController.navigate(NavRoutes.Main_SCREEN){
+                    popUpTo(NavRoutes.AUTHENTICATION_SCREEN){ inclusive = true }
                 }
             }
             null -> {
@@ -85,11 +82,11 @@ fun AuthenticationScreen(
     }
 
     AuthenticationContent(
-        onRegisterClick = {
-            authenticationViewModel.onEvent(AuthenticationEvents.Register(UserModel()))
+        onRegisterClick = { userName, region, number, email, password ->
+            authenticationViewModel.onEvent(AuthenticationEvents.Register(UserModel(email = email, userPassword = password)))
         },
-        onLoginClick = {
-            authenticationViewModel.onEvent(AuthenticationEvents.Login(UserModel()))
+        onLoginClick = { email, password ->
+            authenticationViewModel.onEvent(AuthenticationEvents.Login(UserModel(email = email, userPassword = password)))
         }
     )
 
@@ -97,8 +94,8 @@ fun AuthenticationScreen(
 
 @Composable
 fun AuthenticationContent(
-    onLoginClick: () -> Unit = {},
-    onRegisterClick: () -> Unit = {}
+    onLoginClick: (String, String) -> Unit,
+    onRegisterClick: (String, String, String, String, String) -> Unit
 ){
     val pagerState = rememberPagerState(
         pageCount = { 2 }
@@ -171,41 +168,27 @@ fun AuthenticationContent(
                 // Registration or Login Content
                 HorizontalPager(
                     state = pagerState,
-                    userScrollEnabled = true
+                    userScrollEnabled = false
                 ) {
                     when (pagerState.currentPage) {
-                        0 -> RegistrationContent()
-                        1 -> LoginContent()
+                        0 -> RegistrationContent(onRegisterClick = { userName, selectedRegion, number, email, password ->
+                            onRegisterClick(userName,selectedRegion,number, email,password)
+                        })
+                        1 -> LoginContent(onLoginClick = { email, password ->
+                            onLoginClick(email, password)
+                        })
                     }
                 }
             }
         }
 
-        // Continue or Login
-        Column (
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(80.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
-        ){
-//            BigButton(
-//                label = R.string.continue_,
-//                enabled = false,
-//                onClick = {
-//
-//                    when(pagerState.currentPage){
-//                        0 -> onRegisterClick()
-//                        1 -> onLoginClick()
-//                    }
-//
-//                }
+
+        // Have an Account?
+//            Text(
+//                text = stringResource(R.string.have_an_account_login),
+//                style = MaterialTheme.typography.bodyMedium
 //            )
-            Text(
-                text = stringResource(R.string.have_an_account_login),
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
+
     }
 }
 

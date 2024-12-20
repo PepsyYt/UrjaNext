@@ -25,7 +25,6 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
             emit(Resource.Success(true))
         }
         else{
-            emit(Resource.Success(false))
             emit(Resource.Error("User Not found!"))
         }
     }

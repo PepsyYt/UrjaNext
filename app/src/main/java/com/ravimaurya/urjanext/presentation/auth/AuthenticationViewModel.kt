@@ -3,6 +3,7 @@ package com.ravimaurya.urjanext.presentation.auth
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import com.ravimaurya.urjanext.domain.model.UserModel
 import com.ravimaurya.urjanext.domain.repository.AuthenticationRepository
 import com.ravimaurya.urjanext.util.Resource
@@ -39,6 +40,9 @@ sealed class AuthenticationEvents {
 class AuthenticationViewModel
 @Inject constructor(private val authenticationRepository: AuthenticationRepository): ViewModel() {
 
+    private var _checkUserExistState = MutableStateFlow<CheckUserExistState?>(null)
+    val checkUserExistState = _checkUserExistState.asStateFlow()
+
     private var _userAuthUserState = MutableStateFlow<UserAuthenticationState?>(null)
     val userAuthState = _userAuthUserState.asStateFlow()
 
@@ -51,8 +55,24 @@ class AuthenticationViewModel
         }
     }
 
-    private fun checkUserExist() = viewModelScope.launch {
+     fun checkUserExist() = viewModelScope.launch {
         authenticationRepository.checkUserExist()
+            .collect{ result ->
+                when(result){
+                    is Resource.Error -> {
+                        CheckUserExistState.Error(result.message)
+                        println("CheckUser VM: Error: Result: ${result.message}")
+                    }
+                    Resource.Loading -> {
+                        CheckUserExistState.Loading
+                    }
+                    is Resource.Success -> {
+                        CheckUserExistState.Success(result.data)
+                        println("CheckUser VM: Success: Result: ${result.data}")
+                    }
+                }
+
+            }
     }
 
     private fun register(userModel: UserModel) = viewModelScope.launch{
@@ -105,6 +125,11 @@ class AuthenticationViewModel
                     }
                 }
             }
+    }
+
+    fun logout(){
+        val auth = FirebaseAuth.getInstance()
+        auth.signOut()
     }
 
 

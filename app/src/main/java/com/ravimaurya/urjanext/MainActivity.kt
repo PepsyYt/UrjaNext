@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.navigation.compose.rememberNavController
 import com.ravimaurya.urjanext.theme.UrjaNextTheme
-import com.ravimaurya.urjanext.presentation.screens.navigation.MainNavGraph
+import com.ravimaurya.urjanext.presentation.navigation.MainNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 

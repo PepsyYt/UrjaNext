@@ -33,7 +33,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.ravimaurya.urjanext.R
 import com.ravimaurya.urjanext.presentation.components.BigButton
-import com.ravimaurya.urjanext.presentation.screens.navigation.NavRoutes
+import com.ravimaurya.urjanext.presentation.navigation.NavRoutes
 import com.ravimaurya.urjanext.theme.Green40
 
 @Composable
@@ -125,7 +125,9 @@ fun WelcomeScreen(navController: NavController){
                 label = R.string.continue_,
                 onClick = {
                     // Navigate to Authentication
-                    navController.navigate(NavRoutes.AUTHENTICATION_SCREEN)
+                    navController.navigate(NavRoutes.AUTHENTICATION_SCREEN){
+                        popUpTo(NavRoutes.WELCOME_SCREEN){ inclusive = true }
+                    }
                 }
             )
 
@@ -153,11 +155,5 @@ fun WelcomeScreen(navController: NavController){
 
 
     }
-}
-
-//@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun WelcomePreview(){
-//    WelcomeScreen()
 }
 
